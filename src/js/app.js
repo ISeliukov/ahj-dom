@@ -12,7 +12,7 @@ export default class App {
     this.wrapper.append(this.container);
     this.title = document.createElement('h1');
     this.title.classList.add('title');
-    this.title.innerText = 'WACK THE GOBLIN!';
+    this.title.innerText = 'CATCH GOBLIN';
     this.container.append(this.title);
     this.divArray = [];
     for (let i = 0; i < boardsize ** 2; i += 1) {
