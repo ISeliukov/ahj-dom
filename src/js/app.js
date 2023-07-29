@@ -1,9 +1,9 @@
 export default class App {
-  constructor(boardsize) {
-    this.goblin = document.createElement('div');
-    this.goblin.classList.add('goblin');
+  constructor(size) {
+    this.gobl = document.createElement('div');
+    this.gobl.classList.add('goblin');
 
-    this.activeHole = 1;
+    this.tekHole = 1;
 
     this.wrapper = document.createElement('div');
     this.wrapper.classList.add('wrapper');
@@ -12,34 +12,34 @@ export default class App {
     this.wrapper.append(this.container);
     this.title = document.createElement('h1');
     this.title.classList.add('title');
-    this.title.innerText = 'CATCH GOBLIN';
+    this.title.innerText = 'GOBLIN';
     this.container.append(this.title);
-    this.divArray = [];
-    for (let i = 0; i < boardsize ** 2; i += 1) {
-      this.divArray[i] = document.createElement('div');
-      this.divArray[i].classList.add('hole');
-      this.divArray[i].setAttribute('id', `hole${i}`);
-      this.container.append(this.divArray[i]);
+    this.masdiv = [];
+    for (let i = 0; i < size * size; i += 1) {
+      this.masdiv[i] = document.createElement('div');
+      this.masdiv[i].classList.add('hole');
+      this.masdiv[i].setAttribute('id', `hole${i}`);
+      this.container.append(this.masdiv[i]);
     }
     document.body.append(this.wrapper);
   }
 
-  static getHole(index) {
-    return document.getElementById(`hole${index}`);
+  static getHole(ind) {
+    return document.getElementById(`hole${ind}`);
   }
 
-  moveGoblin(index) {
-    App.getHole(index).append(this.goblin);
+  moveGobl(ind) {
+    App.getHole(ind).append(this.gobl);
   }
 
   gamePlay() {
     setInterval(() => {
-      let newHole = this.activeHole;
-      while (newHole === this.activeHole) {
-        newHole = Math.floor(Math.random() * this.divArray.length);
+      let newHole = this.tekHole;
+      while (newHole === this.tekHole) {
+        newHole = Math.floor(Math.random() * this.masdiv.length);
       }
-      this.activeHole = newHole;
-      this.moveGoblin(this.activeHole);
+      this.tekHole = newHole;
+      this.moveGobl(this.tekHole);
     }, 1000);
   }
 }
