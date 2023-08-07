@@ -21,14 +21,14 @@ export default class App {
       this.container.append(elem);
     }
     document.body.append(this.wrapper);
-	this.cells = document.querySelectorAll(".hole");
+    this.cells = document.querySelectorAll('.hole');
   }
 
   gamePlay() {
     setInterval(() => {
       let newHole = this.oldHole;
       while (newHole === this.oldHole) {
-        newHole = Math.floor(Math.random() * (this.size ** 2));
+        newHole = Math.floor(Math.random() * this.size * this.size);
       }
       this.oldHole = newHole;
       this.cells[newHole].append(this.gobl);
